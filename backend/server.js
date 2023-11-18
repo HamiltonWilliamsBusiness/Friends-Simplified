@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express')
+const friendRoutes = require('./routes/friends')
 
 // the express() creates an express app for us
 const app = express()
@@ -11,9 +12,7 @@ app.use((req, res, next) => {
 })
 
 // routes
-app.get('/', (req, res) => {
-    res.json({mssg: 'Welcome to the app'})
-})
+app.use(friendRoutes)
 
 // listen for requests
 app.listen(process.env.PORT, () => {
