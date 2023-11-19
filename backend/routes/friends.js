@@ -1,5 +1,5 @@
 const express = require('express')
-
+const Friend = require('../models/friendModel')
 const router = express.Router()
 
 // Get all friends
@@ -13,8 +13,15 @@ router.get('/:id', (req, res) => {
 })
 
 // POST a new friend
-router.post('/', (req, res) => {
-    res.json({mssg: 'POST a new friend'})
+router.post('/', async (req, res) => {
+    const {fname, lname, age, birthday} = req.body
+
+    try{
+        const friend = await Friend.create({fname, lname, age, birthday})
+        res.status(200).json(friend)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
 })
 
 // Delete a new friend
