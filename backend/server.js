@@ -20,7 +20,7 @@ app.use('/api/friends', friendRoutes)
 // connect to db
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
-     // listen for requests
+    // listen for requests
      app.listen(process.env.PORT, () => {
         console.log('connected to db & listening on port', process.env.PORT)
 }) 
