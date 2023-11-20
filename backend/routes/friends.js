@@ -1,5 +1,4 @@
 const express = require('express')
-const Friend = require('../models/friendModel')
 const router = express.Router()
 
 // Get all friends
