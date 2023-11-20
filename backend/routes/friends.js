@@ -3,6 +3,8 @@ const {
     createFriend,
     getFriend,
     getFriends,
+    deleteFriend,
+    updateFriend,
 } = require('../controllers/friendController')
 const router = express.Router()
 
@@ -16,13 +18,9 @@ router.get('/:id', getFriend)
 router.post('/', createFriend)
 
 // DELETE a new friend
-router.delete('/:id', (req, res) => {
-    res.json({mssg: 'DELETE a new friend'})
-})
+router.delete('/:id', deleteFriend)
 
 // UPDATE a new friend
-router.patch('/:id', (req, res) => {
-    res.json({mssg: 'Update a new friend'})
-})
+router.patch('/:id', updateFriend)
 
 module.exports = router

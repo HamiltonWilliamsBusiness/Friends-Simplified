@@ -14,7 +14,7 @@ const getFriend = async (req, res) => {
 
     // Verify ObjectId is a mongoDB objectID
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'No such workout'})
+        return res.status(404).json({error: 'No such friend'})
     }
 
     // Find Friend
@@ -22,7 +22,7 @@ const getFriend = async (req, res) => {
 
     // If friend is null, then respond with an error
     if (!friend){
-        return res.status(404).json({error: 'No such workout'})
+        return res.status(404).json({error: 'No such friend'})
     }
 
     res.status(200).json(friend)
@@ -42,11 +42,51 @@ const createFriend = async (req, res) => {
 }
 
 // delete a friend
+const deleteFriend = async (req, res) => {
+    const { id } = req.params
+
+    // Verify ObjectId is a mongoDB objectID
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such friend'})
+    }
+
+    // Find Friend
+    const friend = await Friend.findOneAndDelete({_id: id})
+
+    // If friend is null, then respond with an error
+    if (!friend){
+        return res.status(400).json({error: 'No such friend'})
+    }
+
+    res.status(200).json(friend)
+}
 
 // update a friend
+const updateFriend = async (req, res) => {
+    const { id } = req.params
+
+    // Verify ObjectId is a mongoDB objectID
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such friend'})
+    }
+
+    // Find Friend
+    const friend = await Friend.findOneAndUpdate({_id: id}, {
+        ...req.body
+    })
+
+    // If friend is null, then respond with an error
+    if (!friend){
+        return res.status(400).json({error: 'No such friend'})
+    }
+
+    res.status(200).json(friend)
+}
 
 module.exports = {
     getFriend,
     getFriends,
-    createFriend
+    createFriend,
+    deleteFriend,
+    updateFriend,
 }
