@@ -17,6 +17,11 @@ app.use((req, res, next) => {
 // routes
 app.use('/api/friends', friendRoutes)
 
+// Default route for unmatched paths
+app.use((req, res) => {
+    res.status(404).json({ error: 'Not Found' });
+});
+
 // connect to db
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
