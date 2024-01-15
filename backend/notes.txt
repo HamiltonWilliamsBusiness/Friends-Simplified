@@ -4,3 +4,5 @@
 // and if it does it then it passes it 
 // and attaches it to the request object
 app.use(express.json())
+
+Study A-sync functions and promises
