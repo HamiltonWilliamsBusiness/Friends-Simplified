@@ -1,0 +1,6 @@
+// middleware
+// For any request that comes in
+// The code checks if it has any body
+// and if it does it then it passes it 
+// and attaches it to the request object
+app.use(express.json())
