@@ -2,6 +2,7 @@ import {useEffect, useState } from 'react'
 
 // components
 import FriendDetails from '../components/friendDetails'
+import FriendForm from '../components/FriendForm';
 
 const Home = () => {
     const [friends, setFriends] = useState(null);
@@ -26,6 +27,7 @@ const Home = () => {
                     <FriendDetails key={friend._id} friend={friend}/>
                 ))}
             </div>
+            <FriendForm/>
         </div>
     )
 }
