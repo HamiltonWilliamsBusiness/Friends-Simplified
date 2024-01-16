@@ -1,6 +1,8 @@
 import { useState } from "react"
+import { useFriendsContext } from '../hooks/useFriendsContext';
 
 const FriendForm = () => {
+    const { dispatch } = useFriendsContext()
     const [fname, setFname] = useState('')
     const [lname, setLname] = useState('')
     const [age, setAge] = useState('')
@@ -31,6 +33,7 @@ const FriendForm = () => {
             setAge('')
             setBirthday('')
             console.log('new friend added', json)
+            dispatch({type: 'CREATE_WORKOUT', payload: json})
         }
     }
 
