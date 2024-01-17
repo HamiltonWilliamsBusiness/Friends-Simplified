@@ -1,6 +1,6 @@
 import { createContext, useReducer } from 'react'
 
-export const FriendsContext= createContext()
+export const FriendsContext = createContext()
 
 export const friendsReducer = (state, action) => {
     switch(action.type){
