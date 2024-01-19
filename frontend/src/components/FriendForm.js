@@ -8,6 +8,7 @@ const FriendForm = () => {
     const [age, setAge] = useState('')
     const [birthday, setBirthday] = useState('')
     const [error, setError] = useState(null)
+    const [emptyFields, setEmptyFields] = useState([])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -25,6 +26,7 @@ const FriendForm = () => {
 
         if (!response.ok) {
             setError(json.error)
+            setEmptyFields(json.emptyFields)
         }
         if (response.ok) {
             setError(null)
@@ -32,6 +34,7 @@ const FriendForm = () => {
             setLname('')
             setAge('')
             setBirthday('')
+            setEmptyFields([])
             console.log('new friend added', json)
             dispatch({type: 'CREATE_FRIEND', payload: json})
         }

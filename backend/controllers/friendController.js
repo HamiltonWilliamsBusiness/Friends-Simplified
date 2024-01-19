@@ -32,6 +32,25 @@ const getFriend = async (req, res) => {
 const createFriend = async (req, res) => {
     const {fname, lname, age, birthday} = req.body
 
+    let emptyFields = []
+
+    if (!fname) {
+        emptyFields.push('fname')
+    }
+    if (!lname) {
+        emptyFields.push('lname')
+    }
+    if (!age) {
+        emptyFields.push('age')
+    }
+    if (!birthday) {
+        emptyFields.push('birthday')
+    }
+    if (emptyFields.length > 0) {
+        return res.status(400).json({error: 'Please fill in all the fields', emptyFields})
+    }
+
+
     // add doc to db
     try{
         const friend = await Friend.create({fname, lname, age, birthday})
