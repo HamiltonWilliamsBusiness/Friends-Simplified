@@ -8,9 +8,13 @@ export const friendsReducer = (state, action) => {
             return {
                 friends: action.payload
             }
-        case 'CREATE_WORKOUT':
+        case 'CREATE_FRIEND':
             return {
                 friends: [action.payload, ...state.friends]
+            }
+        case 'DELETE_FRIEND':
+            return {
+                friends: state.friends.filter((f) => f._id !== action.payload._id)
             }
         default:
             return state

@@ -33,7 +33,7 @@ const FriendForm = () => {
             setAge('')
             setBirthday('')
             console.log('new friend added', json)
-            dispatch({type: 'CREATE_WORKOUT', payload: json})
+            dispatch({type: 'CREATE_FRIEND', payload: json})
         }
     }
 
