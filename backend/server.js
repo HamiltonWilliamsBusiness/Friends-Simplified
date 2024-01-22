@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const friendRoutes = require('./routes/friends')
+const userRoutes = require('./routes/user')
 
 // the express() creates an express app for us
 const app = express()
@@ -16,6 +17,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/api/friends', friendRoutes)
+app.use('/api/user', userRoutes)
 
 // Default route for unmatched paths
 app.use((req, res) => {
