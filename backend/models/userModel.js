@@ -34,7 +34,7 @@ userSchema.statics.signup = async function (email, password) {
 
     // Checking if it's null, if it is empty it's null
     if (exists) {
-        throw Error('Email arleady in use')
+        throw Error('Email already in use')
     }
 
     // Basically this code adds more security to passwords by using salt
